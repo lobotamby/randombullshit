@@ -1,0 +1,61 @@
+<!doctype HTML>
+<head>
+    <meta charset="UTF-8">
+    <title>Number evaluation</title>
+</head>
+<body>
+    <h2>
+        Ambrož's JS number evaluator
+    </h2>
+    <p>
+        Hi!! This is my test at JavaScript. :-&rpar;
+    </p>
+    <input id="field"></input>
+    <button onclick="analysis()">Evalute</button>
+    <p id="output"></p>
+    <script>
+        function analysis() {
+            let input = document.getElementById("field").value;
+            let result = checkNumber(input);
+           function checkNumber(value) {
+            return (value % 2 === 0)
+        }
+            if (isNaN(input) == true) {
+                document.getElementById("output").textContent = "Not a number."
+                return
+            }
+            if (result == true) {
+                document.getElementById("output").textContent = "Even."
+            }
+            if (result == false) {
+                document.getElementById("output").textContent = "Odd."
+            }
+        }
+    </script>
+</body>
+<!--
+            /*if (typeof(input) == "string") {
+                document.getElementById("output").textContent = (input) + " is not a number."
+            }
+            gonna have to check this one later...    
+            */
+        function analysis() {
+            let input = document.getElementById("field").textContent;
+            let result = doMath(input);
+            if (isNan(input)) {
+                document.getElementById("output").textContent =
+            "The input isn't a number.";
+            };
+            if (result == true) {
+                 document.getElementById("output").textContent =
+            "The number is even.";
+            }
+            else {
+                 document.getElementById("output").textContent =
+            "The number is odd.";
+            }
+        }
+        function doMath(value) {
+            return (value % 2 === 0)
+        }     
+-->

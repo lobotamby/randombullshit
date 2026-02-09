@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <title>Bitch</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="canvas">
+        <div id="player"></div>
+    </div>
+    <button onclick="blue()">blue</button>
+    <script src="script.js"></script>
+    <div>
+        <input type="text" id="input" onkeypress="findLength(text)" style="margin-top:50px;">
+        <p id="thelength"></p>
+        <script>
+        let output = document.getElementById("thelength");
+let text = document.getElementById("input");
+
+function findLength() {
+  let length = text.value.length;
+
+  if (length == 0) {
+    output.innerHTML = "Nothing typed.";
+  }
+   if (length <= 51) {
+    output.innerHTML = "It's " + length + " characters long";
+  }
+  else {
+    output.innerHTML = "It's long!"
+  }
+}
+
+        </script>
+
+    </div>
+</body>
