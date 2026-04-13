@@ -1,0 +1,182 @@
+<script>
+    function createTriangle() {
+        for (let triangle = "0";triangle.length <= 7;triangle = triangle + "0") {
+            console.log(triangle);
+}
+        console.log("I did it!")
+}
+    function fizzBuzz() {
+        for (let number = 0;number <= 100;number += 1) {
+            if (number == 0) {
+                console.log(0)
+            }
+            if (number % 3 == 0 && number % 5 == 0) {
+                console.log("FizzBuzz!")
+            }
+            if (number % 3 == 0) {
+                console.log("Fizz!")
+            }
+            else if (number % 5 == 0) {
+                console.log("Buzz!")
+        }
+            else {
+                console.log(number)
+        }
+    }
+}
+    function chessBoard() {
+        let size = 8;
+        let row = ""
+        for (let y = 0;y <= size;y += 1) {
+            for (let x = 0;x <= size;x += 1) {
+                // Checks if the sum of the counters (x & y) is even to pick which character to use
+                if ((x + y) % 2 == 0) {
+                    row += "#"
+                }
+                else {
+                    row += " "
+                }
+            }
+            row += "\n" // end of a row it adds a break
+        }
+        console.log(row)
+    }
+
+
+function findMinimum(a,b) {
+    if (a > b) {return a}
+    else {return b}
+}
+function math1() {console.log(findMinimum(12,10))}
+
+function isEven(n) {
+    if (n < 0) {
+        return NaN
+    }
+    if (n % 2 == 0) {
+        return true
+    }
+    else return false
+}
+function math2() {console.log(isEven(50)); console.log(isEven(75)); console.log(isEven(-1));}
+
+function countBs(inputstring) {
+    let fullcount = 0
+    for (let B = 0;B <= inputstring.length;B += 1) {
+        if (inputstring[B] == "B") {
+            fullcount += 1
+        }
+    }
+    return fullcount + " Bs";
+}
+
+function countChar(input,char) {
+    let fullcount = 0
+    for (let i = 0;i <= input.length;i ++) {
+        if (input[i] == char) {
+            fullcount += 1
+        }
+    }
+    return fullcount + " " + char + "s"
+}
+
+function math3() {
+    console.log(countBs("BOB"));
+    console.log(countChar("kakkerlak", "k"));
+}
+
+function math4() {
+    console.log(range(1,10));
+    console.log(range(5, 2, -1));
+    console.log(sum(range(1, 10)));
+}
+
+function sum(sum) {
+    let total = 0
+    for (let value of sum) {
+        total += value;
+    }
+    return total
+}
+
+function range(start,end,step = 1) {
+    let puh = [];
+    if (step > 0) {
+        for (let i = start;i <= end;i += step) puh.push(i);
+    } else {
+        for (let i = start;i >= end;i += step) puh.push(i);
+    }
+    return puh
+}
+
+function math5() {
+    let myArray = ["A", "B", "C"];
+    console.log(reverseArray(myArray));
+    // → ["C", "B", "A"];
+    console.log(myArray);
+    // → ["A", "B", "C"];
+    let arrayValue = [1, 2, 3, 4, 5];
+    reverseArrayInPlace(arrayValue);
+    console.log(arrayValue);
+    // → [5, 4, 3, 2, 1]
+}
+function reverseArray(array) {
+    let newarray = []
+    for (let i = array.length - 1; i >= 0; i--) {
+        newarray.push(array[i])
+    }
+    return newarray
+}
+
+function reverseArrayInPlace(array) {
+    let storagearray = []
+    for (let i = 0; i < Math.max(array); i--) {
+        storagearray.push(array[i])
+        array.pop(array[i])
+    }
+    array.concat(storagearray)
+    return array
+}
+
+function deepEqual(obj1, obj2) {
+  if (obj1 === obj2) return true;
+  
+  if (!typeof(obj1) == "object" || !typeof(obj2) == "object") {
+    return false
+  }
+  let key1 = Object.keys(obj1), key2 = Object.keys(obj2);
+  if (!key1.length == key2.length) {
+    return false
+  }
+  for (let i of key1) {
+    if (!key2.includes(i) || !deepEqual(obj1[i], obj2[i])) {
+      return false
+    }
+  }
+  return true
+}
+
+function deepComparison() {
+    
+let obj = {here: {is: "an"}, object: 2};
+console.log(deepEqual(obj, obj));
+// → true
+console.log(deepEqual(obj, {here: 1, object: 2}));
+// → false
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+// → true
+}
+
+</script>
+<p>
+    Remember to check the <i>console</i>, not this display!!!
+</p>
+<button onclick="createTriangle()">Create triangle</button>
+<button onclick="fizzBuzz()">Do the FizzBuzz thing</button>
+<button onclick="chessBoard()">Chessboard</button>
+<button onclick="math1()">Maths! Find minimum</button>
+<button onclick="math2()">Is it even or odd?</button>
+<button onclick="math3()">Count some characters</button>
+<button onclick="math4()">Array stuff pt. 1!</button>
+<button onclick="math5()">Array stuff.. again!</button>
+<button onclick="deepComparison()">*covered in blood and ash and  dier t and mud.* Deep comparison</button>

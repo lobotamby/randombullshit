@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+    <p id="output">Output shows up here</p>
+    
+    <input type="text" placeholder="Input here" id="input">
+    <button onclick="doIt()">Do it</button><br>
+    <small id="modeLabel">Current mode: n/a</small><br>
+    <select id="mode" onclick="updateMode()">
+        <option value="0">none</option>
+        <option value="1">Format number fancily (000-999)</option>
+    </select>
+    <h3>
+        "Documentation"
+    </h3>
+    <p>
+        <b>Format number fancily (000-999):</b> Accepts any number from 0-999
+        and formats it to have x amount of 0 preceding the number.
+    </p>
+</body>
+<script>
+    const input = document.getElementById("input")
+    const output = document.getElementById("output")
+    let modeValue = document.getElementById("mode").value
+    let result
+    function updateMode() {
+        modeValue = document.getElementById("mode").value
+        document.getElementById("modeLabel").textContent = "Current mode: " + modeValue
+    }
+    function doIt() {
+        if (input.value == "") {output.textContent = "ERR: Nothing typed in."};
+        switch (modeValue) {
+            case "1":
+                result = formatNumber(input.value)
+                output.textContent = result
+                break;
+            default:
+                output.textContent = "ERR: No mode selected."
+                break;
+        }
+    }
+
+    function formatNumber(num) {
+        if (Number(num) == NaN) {return "ERR: Not a number."}
+        if (Number(num) < 10) {return "00" + num}
+        else if (Number(num) < 100) {return "0" + num}
+        else if (Number(num) >= 100) {return num}
+        else {return "ERR: Not a number 0-999."}
+    }
+</script>
