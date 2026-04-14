@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        body {
+            background:linear-gradient(navy 5%,white 25%,red 25%, purple);
+            text-align:center;
+        }
+        p {
+            background:radial-gradient(yellow 155px,#00000000);
+            padding:5px;
+            text-shadow:grey 1px 1px 2px;
+            box-shadow: black 5px 0px 15px
+        }
+        input {
+            width:100%;
+            margin-bottom:50px;
+            border:none;
+            background:linear-gradient(to left, green, yellow,white);
+            color:red;
+            text-align:center;
+            font-size:24pt
+        }
+        button {
+            font-family:"lucida handwriting";
+            background:blue;
+            color:white;
+            text-shadow:white 0px 0px 5px;
+            border:none;
+            padding-left:50px;
+            padding-right:50px;
+            
+            transition:1000ms;
+        }
+        button:hover {
+            cursor:pointer;
+            background:yellow;
+            color:black;
+            text-shadow:black 0px 0px 5px;
+        }
+    </style>
+</head>
+<p>
+    Hi this converts multiple ways of writing probability into decimal.
+    Conversion to other types coming ??? someday. The CSS Is Terrible On
+    Purpose Because WHatever. its My WebSite So I do The Stuff
+</p>
+<p>
+    Converted: <span id="testResult">...</span>
+</p>
+<input id="testing"> <button onclick="updateTest()">Convert</button>
+
+<script>
+    let probA, probB, probC
+    let testProb
+    const input = document.getElementById("testing")
+    function updateTest() {
+        function toDecimal(of) {
+            const str = String(of)
+            if (str.length > 15) {return "That's really long. Stop doing that"}
+        if (str.toLowerCase().includes("in") == true) {
+            return splitFormat("in");
+        }
+        else if (str.toLowerCase().includes("out of") == true) {
+            return splitFormat("out of");
+        }
+        if (str.includes("/") == true) {
+            return splitFormat("/")
+        }
+        function splitFormat(by) {
+            let parts = str.split(String(by));
+            console.log(parts[0] + " and " + parts[1])
+            let prob = parts[0] / parts[1]
+            return prob
+        }
+        if (str.includes("%") == true) {
+            if (str.length == 2) {return "0.0" + str.slice(0, -1)}
+            if (str.length == 3) {return "0." + str.slice(0, -1)}
+            else {return null}
+        }
+        if (str.includes(".") == true && Number(str) !== NaN) {
+            return str
+        }
+        else {return null}
+    } 
+    testProb = toDecimal(input.value)
+    document.getElementById("testResult").textContent = testProb
+    }
+</script>
